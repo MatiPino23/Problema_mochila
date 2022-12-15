@@ -2,6 +2,23 @@ import numpy as np
 import pandas as pd
 import sys
 
+def generateCapacityFitness():  # Generar fitness a partir de la capacidad de cada objeto
+    return data[:, 1]
+
+def generateValueFitness():     # Generar fitness a partir del valor de cada objeto
+    return data[:, 0]
+
+if len(sys.argv) == 5:  # python.exe .\main.py .\hardinstances_pisinger\knapPI_11_20_1000.csv 1 10000 1.4
+    filepath = str(sys.argv[1])
+    seed = int(sys.argv[2])
+    iterations = int(sys.argv[3])
+    tau = float(sys.argv[4])
+    print("Ruta del archivo: ", filepath, "Semilla: ", seed, "Numero de iteraciones: ", iterations, "Tau: ", tau, sep='\n')
+else:
+    print('Error en la entrada de los parametros')
+    print('Los paramentros a ingresar son: ruta del archivo, semilla, numero de iteraciones y tau')
+    sys.exit(0)
+    
 np.random.seed(seed)
 
 nnodes = np.genfromtxt(filepath, delimiter=' ', skip_header = 1 , usecols=(1) , max_rows=1, dtype = int)            # Numero de objetos
