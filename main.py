@@ -26,3 +26,13 @@ capacity = np.genfromtxt(filepath, delimiter=' ', skip_header = 2 , usecols=(1) 
 z_best = np.genfromtxt(filepath, delimiter=' ', skip_header = 3 , usecols=(1) , max_rows=1, dtype = int)            # Mejor valor esperado
 data = np.genfromtxt(filepath, delimiter=',', skip_header = 5 , usecols=(1, 2, 3) , max_rows=nnodes, dtype = int)   # Informacion de los objetos
 x_best = np.random.randint(2, size=nnodes)  # Arreglo inicial de objetos en la mochila
+
+# Creacion de la ruleta con respecto a i^-tau
+roulette = np.arange(1, nnodes + 1)**-tau
+roulette /= np.sum(roulette)
+
+sorted_capacity_fitness = np.argsort(generateCapacityFitness()) # Indices ordenados del fitness de la capacidad
+sorted_value_fitness = np.argsort(generateValueFitness())       # Indices ordenados del fitness del valor
+
+best_factible_x = np.full(nnodes, -1)
+best_factible_value_x = 0
