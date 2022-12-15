@@ -36,3 +36,36 @@ sorted_value_fitness = np.argsort(generateValueFitness())       # Indices ordena
 
 best_factible_x = np.full(nnodes, -1)
 best_factible_value_x = 0
+
+while True:
+    if np.sum(x_best * data[:, 0]) >= z_best and np.sum(x_best * data[:, 1]) <= capacity or iterations == 0:    # Fin del bucle si se encuentra la solucion o termino el numero de iteraciones
+        break
+    if np.sum(x_best * data[:, 1]) >= capacity: # La mochila se encuentra llena o rebasada
+        while True:
+            random_pos = np.take(sorted_capacity_fitness, np.random.choice(sorted_capacity_fitness, 1, p=roulette))[0]
+            if x_best[random_pos] == 1:
+                break
+        x_best[random_pos] = 0
+    else:                                       # La mochila no se encuentra llena
+        if np.random.rand() < 0.5 or np.sum(x_best * data[:, 1]) == 0:              # Poner objeto en la mochila
+            while True:
+                random_pos = np.take(sorted_value_fitness, np.random.choice(sorted_value_fitness, 1, p=roulette))[0]
+                if x_best[random_pos] == 0:
+                    break
+            x_best[random_pos] = 1
+        else:                                   # Quitar objeto de la mochila
+            while True:
+                random_pos = np.take(sorted_capacity_fitness, np.random.choice(sorted_capacity_fitness, 1, p=roulette))[0]
+                if x_best[random_pos] == 1:
+                    break
+            x_best[random_pos] = 0
+        if np.sum(x_best * data[:, 0]) >= best_factible_value_x and np.sum(x_best * data[:, 1]) <= capacity:    # Almacenar la mejor solucion
+            best_factible_x = x_best
+            best_factible_value_x = np.sum(x_best * data[:, 0])
+    iterations -= 1
+if best_factible_value_x == z_best:
+    print("Solucion encontrada, valor encontrado:", best_factible_value_x, "de", z_best)
+    print("En el arreglo:", best_factible_x)
+else:
+    print("Solucion no encontrada, mejor valor encontrado:", best_factible_value_x, "de", z_best)
+    print("En el arreglo:", best_factible_x)
