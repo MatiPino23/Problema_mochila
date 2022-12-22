@@ -24,7 +24,6 @@ Iniciamos Visual Studio Code, y abrimos la aplicación. Una vez realizado el pas
 ***
 ```
 pip install numpy
-pip install matplotlib
 ```
 ***
 
