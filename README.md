@@ -13,7 +13,7 @@ Para utilizar esta aplicación, se necesita instalar Visual Studio Code en la ve
 ## Clonación de repositorio
 
 
-Luego de tener instalado el programa anterior, se debe descargar el repositorio que contiene la aplicación en Python 3, en el enlace: [Enlace]https://github.com/MatiPino23/Problema_mochila/archive/refs/heads/main.zip
+Luego de tener instalado el programa anterior, se debe descargar el repositorio que contiene la aplicación en Python 3, en el enlace: [Enlace](https://github.com/MatiPino23/Problema_mochila/archive/refs/heads/main.zip)
 
 
 ## Compilación y ejecución de la aplicación
