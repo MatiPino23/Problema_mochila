@@ -8,7 +8,7 @@ def generateCapacityFitness():  # Generar fitness a partir de la capacidad de ca
 def generateValueFitness():     # Generar fitness a partir del valor de cada objeto
     return data[:, 0]
 
-if len(sys.argv) == 5:  # python.exe .\main.py .\hardinstances_pisinger\knapPI_11_20_1000.csv 1 10000 1.4
+if len(sys.argv) == 5:  # python.exe .\main.py .\hardinstances_pisinger\knapPI_11_20_1000.csv 1 5000 1.1
     filepath = str(sys.argv[1])
     seed = int(sys.argv[2])
     iterations = int(sys.argv[3])
